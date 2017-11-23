@@ -1,0 +1,19 @@
+#include <string>
+#include "store"
+
+// Store that uses sqlite3. The constructor expects the database file to
+// use.
+
+class Sqlite3store: public Store {
+ public:
+  // Constructor
+  Sqlite3store(std::string const &dbfile);
+
+  // Insert/remove methods
+  void insert(std::string const &name, std::string const &email,
+              std::string const &passwd);
+  void remove(std::string const &email);
+
+ private:
+  std::string dbfile;
+};

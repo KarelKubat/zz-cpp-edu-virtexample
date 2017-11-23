@@ -1,0 +1,21 @@
+#include <fstream>
+#include <string>
+#include "store"
+
+// Store that uses flatfile. The constructor expects the filename.
+// Incidentally, please never use a flatfile in real life applications. This
+// is inherently not threadsafe and not multi-process safe.
+
+class Flatfilestore: public Store {
+ public:
+  // Constructor
+  Flatfilestore(std::string const &filename);
+
+  // Insert/remove methods
+  void insert(std::string const &name, std::string const &email,
+              std::string const &passwd);
+  void remove(std::string const &email);
+
+ private:
+  std::fstream stream;
+};

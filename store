@@ -1,0 +1,23 @@
+// The header is included multiple times per compilation. It must be gated
+// so that it isn't parsed more than once or you get "redefinition" errors.
+#ifndef _STORE_INCLUDED_
+#define _STORE_INCLUDED_
+
+#include <string>
+
+// Generic storage backend template. This is a virtual class.
+// Actual implementations:
+// - will have to implement insert
+// - will have to implement remove
+// - may implement the destructor
+
+class Store {
+ public:
+  virtual ~Store();
+
+  virtual void insert(std::string const &name, std::string const &email,
+                      std::string const &passwd) = 0;
+  virtual void remove(std::string const &email) = 0;
+};
+
+#endif // _STORE_INCLUDED_

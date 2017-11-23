@@ -1,0 +1,23 @@
+#include <string>
+#include "store"
+
+// Store that uses postgresql. The constructor expects the database file to
+// use.
+
+class Postgresqlstore: public Store {
+ public:
+  // Constructor
+  Postgresqlstore(std::string const &dbserver, std::string const &dbname,
+                  std::string const &dbuser, std::string const &dbpass);
+
+  // Destructor
+  ~Postgresqlstore();
+
+  // Insert/remove methods
+  void insert(std::string const &name, std::string const &email,
+              std::string const &passwd);
+  void remove(std::string const &email);
+
+ private:
+  int connection;
+};
