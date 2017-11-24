@@ -38,7 +38,7 @@ virtual void remove(std::string const &email) = 0;
 Next, three implementations are given as an example. All three "stores" are
 implemented only to show how the principle; they don't really store anything
 anywhere, they only print to `std::cout` when they are invoked. All three
-implementations **must** implement `Store`s pure virtual method before they can
+implementations **must** implement `Store`s pure virtual methods before they can
 be considered a concrete implementation. The three examples are:
 
 *  A flat file storage (class `Flatfilestore`)
@@ -136,26 +136,26 @@ switch (wanted_backend) {
 // Insert something
 switch (wanted_backend) {
   case want_flatfile:
-    flat->insert("John Doe", "jonhdoe@example.com", "secret");
+    flat->insert("John Doe", "johndoe@example.com", "secret");
     break;
   case want_sqlite3:
-    sqlite3->insert("John Doe", "jonhdoe@example.com", "secret");
+    sqlite3->insert("John Doe", "johndoe@example.com", "secret");
     break;
   case want_postgres:
-    postgres->insert("John Doe", "jonhdoe@example.com", "secret");
+    postgres->insert("John Doe", "johndoe@example.com", "secret");
     break;
 }
 
 // Remove something
 switch (wanted_backend) {
   case want_flatfile:
-    flat->remove("jonhdoe@example.com");
+    flat->remove("johndoe@example.com");
     break;
   case want_sqlite3:
-    sqlite3->remove("jonhdoe@example.com");
+    sqlite3->remove("johndoe@example.com");
     break;
   case want_postgres:
-    postgres->remove("jonhdoe@example.com");
+    postgres->remove("johndoe@example.com");
     break;
 }
 
